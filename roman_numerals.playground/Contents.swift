@@ -46,18 +46,18 @@ struct rmw_roman_test
 let roman_error_large = "This value is greater than Roman Numerals represent. Please enter something smaller."
 let roman_error_negative = "This value is negative. Try a positive value on for size instead!"
 
+let numerals: [rmw_numeral] = [rmw_numeral(symbol: "M", value: 1000),
+                               rmw_numeral(symbol: "D", value: 500),
+                               rmw_numeral(symbol: "C", value: 100),
+                               rmw_numeral(symbol: "L", value: 50),
+                               rmw_numeral(symbol: "X", value: 10),
+                               rmw_numeral(symbol: "V", value: 5),
+                               rmw_numeral(symbol: "I", value: 1)]
+
 
 //Core function to convert a decimal Int into a Roman String
 func decimalToRoman(decimal: Int) -> String
 {
-        var numerals: [rmw_numeral] = [rmw_numeral(symbol: "M", value: 1000),
-                                       rmw_numeral(symbol: "D", value: 500),
-                                       rmw_numeral(symbol: "C", value: 100),
-                                       rmw_numeral(symbol: "L", value: 50),
-                                       rmw_numeral(symbol: "X", value: 10),
-                                       rmw_numeral(symbol: "V", value: 5),
-                                       rmw_numeral(symbol: "I", value: 1)]
-        
         //Error checking (generally should be handled outside of function for complete projects)
         if decimal > (4 * numerals.first!.value)
         {
