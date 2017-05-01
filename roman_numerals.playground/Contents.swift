@@ -43,9 +43,6 @@ struct rmw_roman_test
         }
 }
 
-let roman_error_large = "This value is greater than Roman Numerals represent. Please enter something smaller."
-let roman_error_negative = "This value is negative. Try a positive value on for size instead!"
-
 let numerals: [rmw_numeral] = [rmw_numeral(symbol: "M", value: 1000),
                                rmw_numeral(symbol: "D", value: 500),
                                rmw_numeral(symbol: "C", value: 100),
@@ -58,16 +55,6 @@ let numerals: [rmw_numeral] = [rmw_numeral(symbol: "M", value: 1000),
 //Core function to convert a decimal Int into a Roman String
 func decimalToRoman(decimal: Int) -> String
 {
-        //Error checking (generally should be handled outside of function for complete projects)
-        if decimal > (4 * numerals.first!.value)
-        {
-                return roman_error_large
-        }
-        else if decimal < 0
-        {
-                return roman_error_negative
-        }
-        
         var remainder = decimal
         var result = ""
         
@@ -97,7 +84,16 @@ func decimalToRoman(decimal: Int) -> String
 }
 
 /* -- TESTS -- */
-let roman_tests = [rmw_roman_test(24, "XXIV"), rmw_roman_test(497, "CDXCVII"), rmw_roman_test(167, "CLXVII"), rmw_roman_test(988, "CMLXXXVIII"), rmw_roman_test(9, "IX"), rmw_roman_test(2395, "MMCCCXCV"), rmw_roman_test(3999, "MMMCMXCIX"), rmw_roman_test(6, "VI"), rmw_roman_test(2409, "MMCDIX"), rmw_roman_test(12367, roman_error_large)]
+let roman_tests = [rmw_roman_test(24, "XXIV"),
+                   rmw_roman_test(497, "CDXCVII"),
+                   rmw_roman_test(167, "CLXVII"),
+                   rmw_roman_test(988, "CMLXXXVIII"),
+                   rmw_roman_test(9, "IX"),
+                   rmw_roman_test(2395, "MMCCCXCV"),
+                   rmw_roman_test(3999, "MMMCMXCIX"),
+                   rmw_roman_test(6, "VI"),
+                   rmw_roman_test(2409, "MMCDIX")]
+
 for test in roman_tests
 {
         let decimal = decimalToRoman(decimal: test.input)
